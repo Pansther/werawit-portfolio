@@ -1,17 +1,9 @@
+import cx from 'clsx'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Noto_Sans, Noto_Sans_Thai } from '@next/font/google'
 
+import { notoSans, notoSansTH } from 'styles/font'
 import styles from 'styles/Home.module.scss'
-
-export const notoSans = Noto_Sans({
-  weight: '400',
-  variable: '--noto-sans-font',
-})
-export const notoSansTH = Noto_Sans_Thai({
-  weight: '400',
-  variable: '--noto-sans-th-font',
-})
 
 export default function Home() {
   return (
@@ -22,8 +14,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main className={cx(styles.main, notoSans.variable, notoSansTH.variable)}>
         <div className={styles.description}>
+          วีรวิทย์ ศิรกุลวัฒน์
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
@@ -46,7 +39,6 @@ export default function Home() {
             </a>
           </div>
         </div>
-
         <div className={styles.center}>
           <Image
             className={styles.logo}
@@ -66,7 +58,6 @@ export default function Home() {
             />
           </div>
         </div>
-
         <div className={styles.grid}>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

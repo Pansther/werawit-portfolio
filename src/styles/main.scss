@@ -1,7 +1,8 @@
 @import 'styles/_global.scss';
 
 * {
-  font-family: 'Noto Sans', 'Noto Sans Thai', sans-serif;
+  font-family: var(--noto-sans-font);
+  font-family: var(--noto-sans-th-font);
 }
 
 html,
