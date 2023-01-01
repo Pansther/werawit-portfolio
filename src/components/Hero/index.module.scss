@@ -3,6 +3,9 @@
 .container {
     width: 100%;
     height: 100vh;
+    user-select: none;
+    color: $white-color;
+    background-color: $black-color;
 
     .inner_container {
         gap: 24px;
@@ -10,6 +13,7 @@
         height: 100%;
         display: flex;
         font-weight: 900;
+        text-align: center;
         align-items: center;
         flex-direction: column;
         justify-content: center;
@@ -70,5 +74,25 @@
                 }
             }
         }
+
+        .name {
+            cursor: pointer;
+            background-clip: text;
+            background-size: auto auto;
+            background-size: 200% auto;
+            background-position: 200% center;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, $white-color, palevioletred);
+
+            &:hover {
+                animation: shading 0.5s ease-in-out forwards;
+            }
+        }
+    }
+}
+
+@keyframes shading {
+    to {
+        background-position: 0% center;
     }
 }

@@ -60,7 +60,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div>Werawit Sirakunwat</div>
+        <div className={styles.name}>Werawit Sirakunwat</div>
       </div>
     </div>
   )
