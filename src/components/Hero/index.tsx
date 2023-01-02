@@ -1,11 +1,14 @@
 'use client'
-import React from 'react'
+
+import React, { useEffect } from 'react'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import { DiReact } from 'react-icons/di'
 import { RiVuejsLine } from 'react-icons/ri'
 import { TbBrandNextjs } from 'react-icons/tb'
 import { AiOutlineAntDesign } from 'react-icons/ai'
+
+import Galaxy from './Galaxy'
 
 import styles from './index.module.scss'
 import { quicksandFont } from 'styles/font'
@@ -23,8 +26,31 @@ const AnimatedIcon = ({ children }: { children?: React.ReactNode }) => {
 }
 
 const Hero = () => {
+  useEffect(() => {
+    const clickEffect = (e: MouseEvent) => {
+      const bubble = document.createElement('div')
+
+      bubble.className = styles.click_effect
+      bubble.style.top = e?.clientY + 'px'
+      bubble.style.left = e?.clientX + 'px'
+
+      document.body.appendChild(bubble)
+
+      bubble.addEventListener('animationend', () => {
+        bubble?.parentElement?.removeChild(bubble)
+      })
+    }
+
+    document.addEventListener('click', clickEffect)
+
+    return () => {
+      document.removeEventListener('click', clickEffect)
+    }
+  }, [])
+
   return (
     <div className={cx(styles.container, quicksandFont.className)}>
+      <Galaxy />
       <div className={styles.inner_container}>
         <div className={styles.icon_container}>
           <AnimatedIcon>

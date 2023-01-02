@@ -3,27 +3,33 @@
 .container {
     width: 100%;
     height: 100vh;
+    overflow: hidden;
     user-select: none;
+    position: relative;
     color: $white-color;
     background-color: $black-color;
 
     .inner_container {
+        top: 50%;
         gap: 24px;
-        width: 100%;
-        height: 100%;
+        left: 50%;
+        z-index: 1;
         display: flex;
+        margin: 0 auto;
         font-weight: 900;
+        width: fit-content;
+        position: absolute;
         text-align: center;
         align-items: center;
         flex-direction: column;
         justify-content: center;
         font-size: $h1-font-size;
         text-transform: uppercase;
+        transform: translate(-50%, -50%);
 
         .icon_container {
             gap: 16px;
             display: flex;
-            // padding: 4px 0;
             user-select: none;
             align-items: center;
             justify-content: center;
@@ -36,7 +42,6 @@
 
         .content_container {
             gap: 12px;
-            width: 100%;
             display: flex;
             padding: 8px 0;
             align-items: center;
@@ -48,7 +53,7 @@
 
                 $silbing-scale: 1.4;
                 $silbing-margin: 0 6px;
-                $silbing-color: palevioletred;
+                $silbing-color: pink;
 
                 .letter {
                     cursor: pointer;
@@ -62,8 +67,8 @@
 
                     &:hover {
                         scale: 2;
-                        color: pink;
                         margin: 0 8px;
+                        color: lightpink;
 
                         &+.letter {
                             scale: $silbing-scale;
@@ -89,10 +94,80 @@
             }
         }
     }
+
+    .galaxy_container {
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+        position: absolute;
+        animation: zoom 24s linear alternate infinite;
+
+        .star {
+            cursor: pointer;
+            position: absolute;
+            border-radius: 100%;
+            transition: box-shadow 0.5s;
+            background-color: $white-color;
+            animation: appear 0.8s forwards;
+            box-shadow: 0 0 8px 0.5px #fff;
+
+            &:hover {
+                box-shadow: 0 0 20px 4px #fff;
+            }
+        }
+    }
+}
+
+.click_effect {
+    z-index: 99999;
+    position: fixed;
+    border-radius: 50%;
+    border-style: solid;
+    box-sizing: border-box;
+    border-color: $white-color;
+    animation: click-effect 0.8s ease-out;
+}
+
+@keyframes click-effect {
+    0% {
+        opacity: 1;
+        width: 0.5em;
+        height: 0.5em;
+        margin: -0.25em;
+        border-width: 0.5em;
+    }
+
+    100% {
+        width: 5em;
+        height: 5em;
+        opacity: 0.2;
+        margin: -2.5em;
+        border-width: 0.03em;
+    }
 }
 
 @keyframes shading {
     to {
         background-position: 0% center;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoom {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 1.5;
     }
 }
